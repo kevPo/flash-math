@@ -1,13 +1,18 @@
 <template>
   <div>
+    <div class="container">
+      <nuxt-link to="/" class="logo">Flash Math!</nuxt-link>
+    </div>
     <nuxt />
   </div>
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy|Raleway&display=swap');
+
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #e6e3fe;
+  font-family: 'Raleway', sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -24,32 +29,70 @@ html {
   margin: 0;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
+.logo {
+  color: #5244c2;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 6em;
+  padding: .5em;
   text-decoration: none;
-  padding: 10px 30px;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+.container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
 }
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
+.title {
+  padding: .5em;
+}
+
+.grid {
+  margin: 20px auto;
+  width:400px;
+  height:400px;
+  display:grid;
+  grid-template-columns: 200px 200px;
+  grid-row: auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+.big-button {
+  background: white;
+  color: #5244c2;
+  cursor: pointer;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 6em;
+  padding: 5px;
+  padding-top: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
 }
 
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+h1 {
+  color: #5244c2;
+  font-weight: bold;
+  font-size: 2em;
+  padding-bottom: 1em;
 }
+
+button {
+  background: #5244c2;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 1em;
+  font-size: 1.5em;
+}
+
+.pad-1 {
+  padding: 5em;
+}
+
 </style>

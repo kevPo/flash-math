@@ -1,18 +1,14 @@
 <template>
   <section>
-    <div class="header">
-      <nuxt-link to="/" class="logo">Flash Math!</nuxt-link>
-    </div>
-
     <div class="container">
-      <h1 class="title">
+      <h1>
         Subtraction
       </h1>
     </div>
 
     <div v-if="this.numberOfQuestions == 0">
       <div class="container">
-        <h2>How many questions?</h2>
+        <h2>How many questions do you want?</h2>
       </div>
 
       <div class="grid">
@@ -25,7 +21,7 @@
 
     <div v-if="this.numberOfQuestions > 0 && !countComplete">
       <div class="container">
-        <h2>How difficult?</h2>
+        <h2>How difficult do you want it?</h2>
       </div>
 
       <div class="container">
@@ -33,20 +29,24 @@
           <div></div>
           <div class=counts>{{topCount}}</div>
           <ul class="numbers">
-            <li @click="setTopCount(1)">1</li>
-            <li @click="setTopCount(2)">2</li>
-            <li @click="setTopCount(3)">3</li>
-            <li @click="setTopCount(4)">4</li>
+            <li :class="{'selected' : topCount.includes('1')}" @click="setTopCount(1)">1</li>
+            <li :class="{'selected' : topCount.includes('12')}" @click="setTopCount(2)">2</li>
+            <li :class="{'selected' : topCount.includes('123')}" @click="setTopCount(3)">3</li>
+            <li :class="{'selected' : topCount.includes('1234')}" @click="setTopCount(4)">4</li>
           </ul>
           <div>-</div>
           <div class="counts">{{bottomCount}}</div>
           <ul class="numbers">
-            <li @click="setBottomCount(1)">1</li>
-            <li @click="setBottomCount(2)">2</li>
-            <li @click="setBottomCount(3)">3</li>
-            <li @click="setBottomCount(4)">4</li>
+            <li :class="{'selected' : bottomCount.includes('1')}" @click="setBottomCount(1)">1</li>
+            <li :class="{'selected' : bottomCount.includes('12')}" @click="setBottomCount(2)">2</li>
+            <li :class="{'selected' : bottomCount.includes('123')}" @click="setBottomCount(3)">3</li>
+            <li :class="{'selected' : bottomCount.includes('1234')}" @click="setBottomCount(4)">4</li>
           </ul>
         </div>
+      </div>
+
+      <div class="container pad-1">
+        <button>Let's Go!</button>
       </div>
     </div>
 
@@ -81,18 +81,6 @@ export default {
 </script>
 
 <style>
-.header {
-  display: flex;
-  width: 100%;
-}
-
-.logo {
-  color: #5244c2;
-  font-family: 'Luckiest Guy', cursive;
-  font-size: 2em;
-  padding: 1em;
-  text-decoration: none;
-}
 
 .title {
   font-size: 6em;
@@ -129,21 +117,22 @@ export default {
 }
 
 .numbers > li {
+  color: white;
   margin: 2px;
 }
 
 .numbers > li:hover {
   cursor: pointer;
-  color: white;
+  color: #5244c2;
+}
+
+.numbers > li.selected {
+  color: #5244c2;
 }
 
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-}
-
-.big-button {
-  cursor: pointer;
 }
 </style>
