@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{153:function(t,n,e){"use strict";e.r(n);var l=e(18),component=Object(l.a)({},(function(){var t=this.$createElement;return(this._self._c||t)("h1",[this._v("Multiplication")])}),[],!1,null,null,null);n.default=component.exports}}]);
