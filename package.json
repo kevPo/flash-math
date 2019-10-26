@@ -10,7 +10,7 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "test": "jest",
-    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "cross-env": "^5.2.0",
