@@ -33,7 +33,7 @@ html {
   color: #5244c2;
   font-family: 'Luckiest Guy', cursive;
   font-size: 6em;
-  padding: .5em;
+  padding: .5em .25em .25em .25em;
   text-decoration: none;
 }
 
@@ -61,6 +61,7 @@ html {
 
 .big-button {
   background: white;
+  border: none;
   color: #5244c2;
   cursor: pointer;
   font-family: 'Luckiest Guy', cursive;
@@ -81,9 +82,9 @@ h1 {
   padding-bottom: 1em;
 }
 
-button {
+.btn {
   background: #5244c2;
-  border-radius: 4px;
+  border-radius: 8px;
   color: white;
   cursor: pointer;
   font-weight: bold;
@@ -93,6 +94,60 @@ button {
 
 .pad-1 {
   padding: 5em;
+}
+
+.title {
+  font-size: 6em;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.grid {
+  padding-top: 2em;
+}
+
+.grid-3 {
+  padding-top: 1em;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 3em;
+  margin: 5px auto;
+  display:grid;
+  grid-template-columns: auto 100px 150px;
+  grid-row: auto auto;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+
+.counts {
+  justify-self: flex-end;
+}
+
+.numbers {
+  display: flex;
+  justify-self: end;
+}
+
+.numbers > li {
+  color: white;
+  margin: 2px;
+}
+
+.numbers > li:hover {
+  cursor: pointer;
+  color: #5244c2;
+}
+
+.numbers > li.selected {
+  color: #5244c2;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 </style>
