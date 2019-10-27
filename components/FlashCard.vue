@@ -1,14 +1,23 @@
 <template>
   <div class="card">
-    <div class="equation">
-      <div></div>
-      <div>{{equation.topNumber}}</div>
-      <div class="operator">{{equation.operator}}</div>
-      <div>{{equation.bottomNumber}}</div>
+    <div v-if="askingQuestion">
+      <div class="equation">
+        <div></div>
+        <div>{{equation.topNumber}}</div>
+        <div class="operator">{{equation.operator}}</div>
+        <div>{{equation.bottomNumber}}</div>
+      </div>
+      <div class="container-vertical answer">
+        <input v-model="answer" type="number">
+        <button @click="answerQuestion" class="btn">Answer</button>
+      </div>
     </div>
-    <div class="container-vertical answer">
-      <input v-model="answer" type="number">
-      <button class="btn">Answer</button>
+    <div v-else>
+      <div class="container-vertical result">
+        <div>{{this.correct ? 'Right' : 'Wrong'}}</div>
+        <h1>{{equation.answer}}</h1>
+        <button v-on:click="$emit('next-equation', correct)" class="btn">Next</button>
+      </div>
     </div>
   </div>
 </template>
@@ -18,7 +27,16 @@ export default {
   props: ['equation'],
   data: function() {
     return {
-      answer: ''
+      answer: '',
+      askingQuestion: true,
+      correct: true
+    }
+  },
+  methods: {
+    answerQuestion() {
+      this.correct = this.answer == this.equation.answer;
+      console.log(this.correct);
+      this.askingQuestion = false;
     }
   }
 }
@@ -60,7 +78,12 @@ export default {
   height: 150px;
 }
 
-.answer > button {
+.result {
+  height: 300px;
+}
+
+.answer > button,
+.result > button {
   margin-top: auto;
 }
 

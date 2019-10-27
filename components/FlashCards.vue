@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <FlashCard :equation='equations[id]'/>
+    <FlashCard v-on:next-equation="getNextEquation" :equation='equations[id]'/>
   </section>
 </template>
 
@@ -14,8 +14,18 @@ export default {
   props: ['equations'],
   data: function() {
     return {
-      id: 0
+      id: 0,
+      results: []
     };
+  },
+  methods: {
+    getNextEquation: function(previousResult) {
+      this.results.push({
+        ...this.equations[this.id],
+        correct: previousResult
+      });
+      this.id++;
+    }
   }
 }
 </script>
