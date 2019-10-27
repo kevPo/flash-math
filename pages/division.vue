@@ -30,7 +30,8 @@ export default {
     return {
       numberOfQuestions: 0,
       countComplete: false,
-      counts: {}
+      counts: {},
+      play: false
     };
   },
   methods: {
@@ -41,6 +42,7 @@ export default {
     setDifficulty(counts) {
       this.counts = counts;
       this.countComplete = true;
+      this.play = true;
     }
   }
 }

@@ -14,33 +14,43 @@
       <DifficultyLevel operator="+" v-on:lets-go="setDifficulty" />
     </div>
 
+    <div v-if="this.play">
+      <FlashCards :equations="equations" />
+    </div>
+
   </section>
 </template>
 
 <script>
 import QuestionCount from "~/components/QuestionCount.vue";
 import DifficultyLevel from "~/components/DifficultyLevel.vue";
+import FlashCards from "~/components/FlashCards.vue";
+import mathService from "~/services/mathService.js";
 
 export default {
   components: {
     QuestionCount,
-    DifficultyLevel
+    DifficultyLevel,
+    FlashCards
   },
   data: function() {
     return {
       numberOfQuestions: 0,
       countComplete: false,
-      counts: {}
+      counts: {},
+      play: false,
+      equations: []
     };
   },
   methods: {
     setNumberOfQuestions(numberOfQuestions) {
       this.numberOfQuestions = numberOfQuestions;
-      console.log(this.numberOfQuestions);
     },
     setDifficulty(counts) {
       this.counts = counts;
       this.countComplete = true;
+      this.equations = mathService.getAdditionEquations(this.numberOfQuestions, counts.top, counts.bottom);
+      this.play = true;
     }
   }
 }
