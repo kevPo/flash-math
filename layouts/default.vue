@@ -44,6 +44,11 @@ html {
   width: 100%;
 }
 
+.container-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
 .title {
   padding: .5em;
 }
@@ -88,8 +93,8 @@ h1 {
   color: white;
   cursor: pointer;
   font-weight: bold;
-  padding: 1em;
-  font-size: 1.5em;
+  padding: 1rem;
+  font-size: 1.5rem;
 }
 
 .pad-1 {
@@ -148,6 +153,17 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
 }
 
 </style>

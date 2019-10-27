@@ -6,12 +6,21 @@
       <div class="operator">{{equation.operator}}</div>
       <div>{{equation.bottomNumber}}</div>
     </div>
+    <div class="container-vertical answer">
+      <input v-model="answer" type="number">
+      <button class="btn">Answer</button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['equation']
+  props: ['equation'],
+  data: function() {
+    return {
+      answer: ''
+    }
+  }
 }
 </script>
 
@@ -24,7 +33,7 @@ export default {
   display: inline-block;
   font-size: 3em;
   height: 400px;
-  margin: 1rem;
+  margin: .5rem;
   padding: 2rem;
   position: relative;
   width: 300px;
@@ -45,5 +54,23 @@ export default {
 .operator {
   display: flex;
   justify-self: end;
+}
+
+.answer {
+  height: 150px;
+}
+
+.answer > button {
+  margin-top: auto;
+}
+
+.answer > input {
+  border: none;
+  color: #5244c2;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 3rem;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  text-align: right;
 }
 </style>
