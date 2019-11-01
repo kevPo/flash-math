@@ -3,10 +3,14 @@
     <div class="card">
       <FlashCardQuestion v-if="this.askingQuestion" v-on:question-answered="questionAnswered" :equation='equations[currentQuestionId]'/>
       <FlashCardResult v-else-if="!this.done" v-on:next-equation="getNextEquation" :status="this.currentQuestionStatus" />
-      <div v-else>More Coming Soon Mackenzie!</div>
+      <div v-else>
+        <span>Results</span>
+        <span>{{ percentCorrect }}</span>
+      </div>
     </div>
   </section>
 </template>
+
 <script>
 import FlashCardQuestion from "~/components/FlashCardQuestion.vue";
 import FlashCardResult from "~/components/FlashCardResult.vue";
@@ -30,8 +34,20 @@ export default {
       done: false
     };
   },
+  computed: {
+    percentCorrect: function () {
+      const correctAnswers = this.results.filter(r => r.correct);
+      console.log({results: this.results.length, correct: correctAnswers.length })
+      return correctAnswers.length / this.results.length * 100;
+    }
+  },
   methods: {
     questionAnswered: function(answer) {
+      if (answer == '') {
+        console.log('getting out');
+        return;
+      }
+
       const equation = this.equations[this.currentQuestionId];
       const correct = equation.answer == answer;
       this.currentQuestionStatus = {

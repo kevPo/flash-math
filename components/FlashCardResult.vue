@@ -3,13 +3,20 @@
     <span class="answer" v-bind:class="{ correct: status.correct, wrong: !status.correct }">{{ status.answer }}</span>
     <span class="correct result-sub" v-if="!status.correct">Correct Answer: {{ status.equation.answer }}</span>
     <span class="correct result-sub" v-if="status.correct">Nice Job!</span>
-    <button v-on:click="$emit('next-equation')" class="btn">Next</button>
+    <button v-focus v-on:click="$emit('next-equation')" class="btn">Next</button>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['status']
+  props: ['status'],
+  directives: {
+    focus: {
+      inserted: function (el) {
+        el.focus()
+      }
+    }
+  }
 }
 </script>
 
