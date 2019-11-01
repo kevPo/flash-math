@@ -7,7 +7,7 @@
       <div>{{equation.bottomNumber}}</div>
     </div>
     <div class="container-vertical answer">
-      <input v-model="answer" type="number">
+      <input v-focus v-model="answer" v-on:keyup.enter="$emit('question-answered', answer)" type="number">
       <button v-on:click="$emit('question-answered', answer)" class="btn">Answer</button>
     </div>
   </div>
@@ -19,6 +19,13 @@ export default {
   data: function() {
     return {
       answer: ''
+    }
+  },
+  directives: {
+    focus: {
+      inserted: function (el) {
+        el.focus()
+      }
     }
   }
 }

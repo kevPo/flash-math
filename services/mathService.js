@@ -29,14 +29,15 @@ const getSubtractionEquations = function(numberOfEquations, topCount, bottomCoun
   let equations = [];
 
   for (var i = 0; i < numberOfEquations; i++) {
-    const topNumber = randomIntFromInterval(numbers[topCount-1], numbers[topCount]);
     const bottomNumber = randomIntFromInterval(numbers[bottomCount-1], numbers[bottomCount]);
+    const topNumber = randomIntFromInterval(numbers[topCount-1], numbers[topCount]);
     const answer = topNumber - bottomNumber;
 
     equations.push({
       topNumber,
       bottomNumber,
-      answer
+      answer,
+      operator: '-'
     })
   }
 
