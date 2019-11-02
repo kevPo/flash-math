@@ -9,7 +9,7 @@ const getAdditionEquations = function(numberOfEquations, topCount, bottomCount) 
   let equations = [];
 
   for (var i = 0; i < numberOfEquations; i++) {
-    const topNumber = randomIntFromInterval(numbers[topCount-1], numbers[topCount]);
+    const topNumber = randomIntFromInterval(numbers[topCount-1], numbers[topCount]-1);
     const bottomNumber = randomIntFromInterval(numbers[bottomCount-1], numbers[bottomCount]);
     const answer = topNumber + bottomNumber;
 
@@ -29,8 +29,8 @@ const getSubtractionEquations = function(numberOfEquations, topCount, bottomCoun
   let equations = [];
 
   for (var i = 0; i < numberOfEquations; i++) {
-    const bottomNumber = randomIntFromInterval(numbers[bottomCount-1], numbers[bottomCount]);
-    const topNumber = randomIntFromInterval(numbers[topCount-1], numbers[topCount]);
+    const topNumber = randomIntFromInterval(numbers[topCount-1], numbers[topCount]-1);
+    const bottomNumber = randomIntFromInterval(numbers[bottomCount-1], topNumber);
     const answer = topNumber - bottomNumber;
 
     equations.push({
@@ -48,14 +48,15 @@ const getMultiplicationEquations = function(numberOfEquations, topCount, bottomC
   let equations = [];
 
   for (var i = 0; i < numberOfEquations; i++) {
-    const topNumber = randomIntFromInterval(numbers[topCount-1], numbers[topCount]);
-    const bottomNumber = randomIntFromInterval(numbers[bottomCount-1], numbers[bottomCount]);
+    const topNumber = randomIntFromInterval(numbers[topCount-1], numbers[topCount]-1);
+    const bottomNumber = randomIntFromInterval(numbers[bottomCount-1], numbers[bottomCount]-1);
     const answer = topNumber * bottomNumber;
 
     equations.push({
       topNumber,
       bottomNumber,
-      answer
+      answer,
+      operator: 'x'
     })
   }
 
@@ -66,14 +67,15 @@ const getDivisionEquations = function(numberOfEquations, topCount, bottomCount) 
   let equations = [];
 
   for (var i = 0; i < numberOfEquations; i++) {
-    const topNumber = randomIntFromInterval(numbers[topCount-1], numbers[topCount]);
-    const bottomNumber = randomIntFromInterval(numbers[bottomCount-1], numbers[bottomCount]);
+    const topNumber = randomIntFromInterval(numbers[topCount-1], numbers[topCount]-1);
+    const bottomNumber = randomIntFromInterval(numbers[bottomCount-1], numbers[bottomCount]-1);
     const answer = topNumber / bottomNumber;
 
     equations.push({
       topNumber,
       bottomNumber,
-      answer
+      answer,
+      operator: '/'
     })
   }
 
